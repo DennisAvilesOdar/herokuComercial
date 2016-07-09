@@ -11,8 +11,9 @@ $("#cbodepartamento").change(function(){
 });
 
 $("#cboprovincia").change(function(){
+    var codigoDepartamento = $("#cbodepartamento").val();
     var codigoProvincia = $("#cboprovincia").val();
-    cargarComboDistrito("#cbodistrito", "todos", codigoProvincia);
+    cargarComboDistrito("#cbodistrito", "todos", codigoDepartamento,codigoProvincia);
     listar();
 });
         

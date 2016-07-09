@@ -231,9 +231,9 @@ function cargarComboProvincia(p_nombreCombo, p_tipo, p_codigo_departamento){
         if (datosJSON.estado===200){
             var html = "";
             if (p_tipo==="seleccione"){
-                html += '<option value="">Seleccione una categoría</option>';
+                html += '<option value="">Seleccione un distrito</option>';
             }else{
-                html += '<option value="0">Todas las categorías</option>';
+                html += '<option value="0">Todas los distritos</option>';
             }
 
             $.each(datosJSON.datos, function(i,item) {

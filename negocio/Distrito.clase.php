@@ -40,7 +40,7 @@ class Distrito extends Conexion{
         $this->codigoDepartamento = $codigoDepartamento;
     }
     
-    public function cargarListaDatos($p_codigo_departamento,$p_codigo_provincia){
+    public function cargarListaDatos($p_codigo_provincia,$p_codigo_departamento){
 	try {
             $sql = " select * from distrito where codigo_provincia = :p_codigo_provincia and codigo_departamento = :p_codigo_departamento order by 2";
             $sentencia = $this->dblink->prepare($sql);
