@@ -6,10 +6,10 @@
     require_once '../util/funciones/Funciones.clase.php';
 
     try {
-        $codigoDep = $_POST["p_codigo_departamento"];
+        $codigoDepartamento = $_POST["codigoDepartamento"];
         
 	$objProvincia = new Provincia();
-        $resultado = $objProvincia->cargarListaDatos($codigoDep);
+        $resultado = $objProvincia->cargarListaDatos($codigoDepartamento);
 	Funciones::imprimeJSON(200, "", $resultado);
 	
     } catch (Exception $exc) {

@@ -39,12 +39,12 @@ function listar(){
         codigoDepartamento = 0;
     }
     
-    var codigoProvincia = $("#cboProvincia").val();
+    var codigoProvincia = $("#cboprovincia").val();
     if (codigoProvincia === null){
         codigoProvincia = 0;
     }
     
-    var codigoDistrito = $("#cboDistrito").val();
+    var codigoDistrito = $("#cbodistrito").val();
     if (codigoDistrito === null){
         codigoDistrito = 0;
     }

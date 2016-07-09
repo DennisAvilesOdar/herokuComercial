@@ -6,8 +6,8 @@
     require_once '../util/funciones/Funciones.clase.php';
 
     try {
-        $codigoDepartamento = $_POST["p_codigo_departamento"];
-        $codigoProvincia = $_POST["p_codigo_provincia"];
+        $codigoDepartamento = $_POST["codigoDepartamento"];
+        $codigoProvincia = $_POST["codigoProvincia"];
         
 	$objDistrito = new Distrito();
         $resultado = $objDistrito->cargarListaDatos($codigoDepartamento, $codigoProvincia);
