@@ -27,7 +27,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de artículos</h1>
+                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de Proveedor</h1>
                 </section>
 
                 <section class="content">
@@ -43,40 +43,16 @@
 			      </div>
 			      <div class="modal-body">
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
-				  <div class="row">
-				    <div class="col-xs-3">
-					<p>Código artículo<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
-				    </div>
-				  </div>
-				  <p>Nombre <font color = "red">*</font>
+				  <p>Ruc Proveedor <font color = "red">*</font>
 				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
-				  <div class="row">
-				    <div class="col-xs-3">
-					<p>
-					    Precio de Venta <font color = "red">*</font>
-					    <input type="text" name="txtprecio" id="txtprecio" class="form-control input-sm" placeholder="" required="">
-					<p>
-				    </div>
-				  </div>
-				  <p>
-				      Línea <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbolineamodal" id="cbolineamodal" required="" >
-
-				      </select>
-				  </p>
-                                  
-				  <p>
-				      Categoría <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbocategoriamodal" id="cbocategoriamodal" required="" >
-
-				      </select>
-				  </p>
-				  <p>
-				      Marca <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbomarcamodal" id="cbomarcamodal" required="" >
-
-				      </select>
-				  </p>
+				  <p>Razon Social <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Direccion <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+                                  <p>Telefono <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+                                  <p>Representante Legal <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
 				  <p>
 				      <font color = "red">* Campos obligatorios</font>
 				  </p>
@@ -93,15 +69,6 @@
 		    <!-- FIN del formulario modal -->
 
                     <div class="row">
-                        <div class="col-xs-3">
-                            <select id="cbolinea" class="form-control input-sm"></select>
-                        </div>
-                        <div class="col-xs-3">
-                            <select id="cbocategoria" class="form-control input-sm"></select>
-                        </div>
-                        <div class="col-xs-3">
-                            <select id="cbomarca" class="form-control input-sm"></select>
-                        </div>
                         <div class="col-xs-3">
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Agregar nuevo artículo</button>
                         </div>
@@ -123,8 +90,8 @@
 	?>
 	
 	<!--JS-->
-	<script src="js/cargar-combos.js" type="text/javascript"></script>
-	<script src="js/articulo.js" type="text/javascript"></script>
+<!--	<script src="js/cargar-combos.js" type="text/javascript"></script>-->
+        <script src="js/proveedor.js" type="text/javascript"></script>
 
     </body>
 </html>
