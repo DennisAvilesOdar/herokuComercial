@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <a href="index.cliente.php">INGRESAR COMO CLIENTE</a><br>
     <meta charset="UTF-8">
     <title><?php echo C_NOMBRE_SOFTWARE; ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
