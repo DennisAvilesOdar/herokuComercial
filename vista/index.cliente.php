@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <a href="index.php">INGRESAR COMO ADMINISTRADOR</a><br>
     <meta charset="UTF-8">
     <title><?php echo C_NOMBRE_SOFTWARE; ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -28,7 +29,12 @@
     <!-- box-msg -->
     <link href="../util/bootstrap/css/box-msg.css" rel="stylesheet" type="text/css" />
 
+     <?php
+	    include 'estilos.vista.php';
+	?>
+    
   </head>
+  
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
@@ -86,6 +92,85 @@
     <div class="box-footer">
             El acceso proporciona información de carácter CONFIDENCIAL, por esta razón durante la sesión, todas las acciones del cliente pueden AUDITADAS; es decir, se generarán reportes de uso y son de responsabilidad absoluta del usuario. No debe compartir su usuario ni contraseña, ni proporcionar información a personas ajenas a estas, toda consulta deberá ser realizada mediante documentación sustentatoria. El USUARIO y CONTRASEÑA son personales e intransferibles. Tome sus medidas de seguridad.
     </div>
+  
+  <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+
+ 
+                <section class="content">
+		    <!-- INICIO del formulario modal -->
+		    <small>
+		    <form id="frmgrabar">
+			<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="titulomodal">Título de la ventana</h4>
+			      </div>
+			      <div class="modal-body">
+				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
+				  <div class="row">
+				    <div class="col-xs-3">
+					<p>Código Cliente<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
+				    </div>
+				  </div>
+				  <p>Apellido Paterno <font color = "red">*</font>
+				  	<input type="text" name="txtpaterno" id="txtpaterno" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Apellido Materno <font color = "red">*</font>
+				  	<input type="text" name="txtmaterno" id="txtmaterno" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Nombres <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>                                 
+                                  <p>DNI <font color = "red">*</font>
+				  	<input type="text" name="txtDNI" id="txtDNI" class="form-control input-sm" placeholder="" required=""><p>                                 
+                                  <p>Direccion <font color = "red">*</font>
+				  	<input type="text" name="txtdireccion" id="txtdireccion" class="form-control input-sm" placeholder="" required=""><p>                                 
+                                  <p>Email <font color = "red">*</font>
+				  	<input type="text" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Clave <font color = "red">*</font>
+				  	<input type="text" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>                               
+				  <p>
+				      Departamento <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cbodepartamentomodal" id="cbodepartamentomodal" required="" >
+
+				      </select>
+				  </p>
+                                  
+				  <p>
+				      Provincia <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cboprovinciamodal" id="cboprovinciamodal" required="" >
+
+				      </select>
+				  </p>
+				  <p>
+				      Distrito <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cbodistritomodal" id="cbodistritomodal" required="" >
+
+				      </select>
+				  </p>
+                                  
+                                  <label>
+                        <input type="checkbox" name="chkrecordar" value="S"> Aceptar acuerdo
+                    </label>
+				  <p>
+				      <font color = "red">* Campos obligatorios</font>
+				  </p>
+			      </div>
+                                <div class="modal-footer">
+				  <button type="submit" class="btn btn-success" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
+				  <button type="button" class="btn btn-default" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		    </form>
+			</small>
+                </section>
+            </div>
+  
+            <?php
+	    include 'scripts.vista.php';
+	?>
 
     <!-- jQuery 2.1.3 -->
     <script src="../util/jquery/jquery.min.js"></script>
@@ -93,8 +178,10 @@
     <script src="../util/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <!-- iCheck -->
     <script src="../util/lte/plugins/iCheck/icheck.js" type="text/javascript"></script>
-    <script src="js/cargar-combos.js" type="text/javascript"></script>
-	<script src="js/cliente.js" type="text/javascript"></script>
+        <script src="js/cargar-combos.js" type="text/javascript"></script>
+	<script src="js/cliente2.js" type="text/javascript"></script>
+        
+        
     <script>
       $(function () {
         $('input').iCheck({

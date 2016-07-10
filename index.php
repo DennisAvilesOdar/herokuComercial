@@ -1,3 +1,3 @@
 <?php
 
-header("location:vista/index.php");
+header("location:vista/index.cliente.php");
