@@ -88,9 +88,7 @@
     </div>
 
   </div><!-- /.login-box -->
-                <section class="content">
-		    <!-- INICIO del formulario modal -->
-		    <small>
+
 		    <form id="frmgrabar">
 			<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
@@ -155,8 +153,6 @@
 			  </div>
 			</div>
 		    </form>
-			</small>
-                </section>
   
             <?php
 	    include 'scripts.vista.php';
