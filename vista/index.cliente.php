@@ -88,7 +88,9 @@
     </div>
 
   </div><!-- /.login-box -->
-                
+                <section class="content">
+		    <!-- INICIO del formulario modal -->
+		    <small>
 		    <form id="frmgrabar">
 			<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
@@ -153,14 +155,12 @@
 			  </div>
 			</div>
 		    </form>
+			</small>
+                </section>
   
             <?php
 	    include 'scripts.vista.php';
 	?>
-
-    <div class="box-footer">
-            El acceso proporciona información de carácter CONFIDENCIAL, por esta razón durante la sesión, todas las acciones del cliente pueden AUDITADAS; es decir, se generarán reportes de uso y son de responsabilidad absoluta del usuario. No debe compartir su usuario ni contraseña, ni proporcionar información a personas ajenas a estas, toda consulta deberá ser realizada mediante documentación sustentatoria. El USUARIO y CONTRASEÑA son personales e intransferibles. Tome sus medidas de seguridad.
-    </div>
   
     <!-- jQuery 2.1.3 -->
     <script src="../util/jquery/jquery.min.js"></script>
