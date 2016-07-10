@@ -18,7 +18,17 @@ class Cliente extends Conexion {
     private $codigo_departamento;
     private $codigo_provincia;
     private $codigo_distrito;
+    private $clave;
     
+    function getClave() {
+        return $this->clave;
+    }
+
+    function setClave($clave) {
+        $this->clave = $clave;
+    }
+
+        
     function getCodigo_cliente() {
         return $this->codigo_cliente;
     }
@@ -174,5 +184,138 @@ class Cliente extends Conexion {
             throw $exc;
         }
             
+    }
+    
+    public function agregar() {
+        $this->dblink->beginTransaction();
+        
+        try {
+            $sql = "select * from f_generar_correlativo('cliente') as nc";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            
+            if ($sentencia->rowCount()){
+                $nuevoCodigoCliente = $resultado["nc"];
+                $this->setCodigo_cliente($nuevoCodigoCliente);
+                
+                $sql = "
+                        INSERT INTO cliente
+                                (
+                                        codigo_cliente, 
+                                        apellido_paterno, 
+                                        apellido_materno, 
+                                        nombres, 
+                                        nro_documento_identidad, 
+                                        direccion, 
+                                        telefono_fijo, 
+                                        telefono_movil1, 
+                                        telefono_movil2, 
+                                        email, 
+                                        direccion_web, 
+                                        codigo_departamento, 
+                                        codigo_provincia, 
+                                        codigo_distrito,
+                                        clave
+                                )
+                            VALUES 
+                                (
+                                        :p_codigo_cliente, 
+                                        :p_apellido_paterno, 
+                                        :p_apellido_materno, 
+                                        :p_nombres, 
+                                        :p_nro_documento_identidad, 
+                                        :p_direccion, 
+                                        :p_telefono_fijo, 
+                                        :p_telefono_movil1, 
+                                        :p_telefono_movil2, 
+                                        :p_email, 
+                                        :p_direccion_web, 
+                                        :p_codigo_departamento, 
+                                        :p_codigo_provincia, 
+                                        :p_codigo_distrito,
+                                        :p_clave
+                                )
+                    ";
+                
+                //Preparar la sentencia
+                $sentencia = $this->dblink->prepare($sql);
+                
+                //Asignar un valor a cada parametro
+                $sentencia->bindParam(":p_codigo_cliente", $this->getCodigo_cliente());
+                $sentencia->bindParam(":p_apellido_paterno", $this->getApellido_paterno());
+                $sentencia->bindParam(":p_apellido_materno", $this->getApellido_materno());
+                $sentencia->bindParam(":p_nombres", $this->getNombres());
+                $sentencia->bindParam(":p_nro_documento_identidad", $this->getNro_documento_identidad());
+                $sentencia->bindParam(":p_direccion", $this->getDireccion());
+                $sentencia->bindParam(":p_telefono_fijo", $this->getTelefono_fijo());
+                $sentencia->bindParam(":p_telefono_movil1", $this->getTelefono_movil1());
+                $sentencia->bindParam(":p_telefono_movil2", $this->getTelefono_movil2());
+                $sentencia->bindParam(":p_email", $this->getEmail());
+                $sentencia->bindParam(":p_direccion_web", $this->getDireccion_web());
+                $sentencia->bindParam(":p_codigo_departamento", $this->getCodigo_departamento());
+                $sentencia->bindParam(":p_codigo_provincia", $this->getCodigo_provincia());
+                $sentencia->bindParam(":p_codigo_distrito", $this->getCodigo_distrito());
+                $sentencia->bindParam(":p_clave", $this->getClave());
+                
+                //Ejecutar la sentencia preparada
+                $sentencia->execute();
+                
+                
+                //Actualizar el correlativo en +1
+                $sql = "update correlativo set numero = numero + 1 where tabla = 'cliente'";
+                $sentencia = $this->dblink->prepare($sql);
+                $sentencia->execute();
+                
+                $this->dblink->commit();
+                
+                return true; //significa que todo se ha ejecutado correctamente
+                
+            }else{
+                throw new Exception("No se ha configurado el correlativo para la tabla cliente");
+            }
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack(); //Extornar toda la transacción
+            throw $exc;
+        }
+        
+        return false;
+            
+    }
+    
+    public function leerDatos($p_codigoCliente) {
+        try {
+            $sql = "
+                    SELECT 
+                            codigo_cliente, 
+                            apellido_paterno, 
+                            apellido_materno, 
+                            nombres, 
+                            nro_documento_identidad, 
+                            direccion, 
+                            telefono_fijo, 
+                            telefono_movil1, 
+                            telefono_movil2, 
+                            email, 
+                            direccion_web, 
+                            codigo_departamento, 
+                            codigo_provincia, 
+                            codigo_distrito
+                        FROM cliente
+                        where codigo_cliente = :p_codigo_cliente
+                ";
+            
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_codigo_cliente", $p_codigoCliente);
+            $sentencia->execute();
+            
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+            
+        } catch (Exception $exc) {
+            throw $exc;
+        }
     }
 }

@@ -13,7 +13,7 @@ $("#cbodepartamento").change(function(){
 $("#cboprovincia").change(function(){
     var codigoDepartamento = $("#cbodepartamento").val();
     var codigoProvincia = $("#cboprovincia").val();
-    cargarComboDistrito("#cbodistrito", "todos", codigoDepartamento,codigoProvincia);
+    cargarComboDistrito("#cbodistrito", "todos", codigoDepartamento, codigoProvincia);
     listar();
 });
         
@@ -27,12 +27,12 @@ $("#cbodistrito").change(function(){
 
 $("#cbodepartamentomodal").change(function(){
     var codigoDepartamento = $("#cbodepartamentomodal").val();
-    cargarComboProvincia("#cbocategoriamodal", "todos", codigoDepartamento);
+    cargarComboProvincia("#cboprovinciamodal", "todos", codigoDepartamento);
 });
 $("#cboprovinciamodal").change(function(){
     var codigoDepartamento = $("#cbodepartamentomodal").val();
     var codigoProvincia = $("#cboprovinciamodal").val();
-    cargarComboDistrito("#cbodistritomodal", "todos", codigoDepartamento,codigoProvincia);
+    cargarComboDistrito("#cbodistritomodal", "todos", codigoDepartamento, codigoProvincia);
 });
 
 function listar(){
@@ -72,15 +72,15 @@ function listar(){
             html += '<th>CODIGO</th>';
             html += '<th>CLIENTE</th>';
             html += '<th>DNI</th>';
-            html += '<th>DIR</th>';
-            html += '<th>TELE</th>';
-            html += '<th>CEL1</th>';
-            html += '<th>CEL2</th>';
+            html += '<th>DIRECCION</th>';
+            html += '<th>TELEFONO FIJO</th>';
+            html += '<th>CELULAR 1</th>';
+            html += '<th>CELULAR 2</th>';
             html += '<th>EMAIL</th>';
-            html += '<th>WEB</th>';
-            html += '<th>DEPART</th>';
-            html += '<th>PROV</th>';
-            html += '<th>DIST</th>';
+            html += '<th>DIRECCION WEB</th>';
+            html += '<th>DEPARTAMENTO</th>';
+            html += '<th>PROVINCIA</th>';
+            html += '<th>DISTRITO</th>';
 	    html += '<th style="text-align: center">OPCIONES</th>';
             html += '</tr>';
             html += '</thead>';
@@ -129,5 +129,134 @@ function listar(){
         var datosJSON = $.parseJSON( error.responseText );
         swal("Error", datosJSON.mensaje , "error"); 
     });
+    
+}
+
+$("#frmgrabar").submit(function(evento){
+    evento.preventDefault();
+    
+    swal({
+		title: "Confirme",
+		text: "¿Esta seguro de grabar los datos ingresados?",
+		
+		showCancelButton: true,
+		confirmButtonColor: '#3d9205',
+		confirmButtonText: 'Si',
+		cancelButtonText: "No",
+		closeOnConfirm: false,
+		closeOnCancel: true,
+                imageUrl: "../imagenes/pregunta.png"
+	},
+	function(isConfirm){ 
+
+            if (isConfirm){ //el usuario hizo clic en el boton SI     
+                
+                //procedo a grabar
+                
+                $.post(
+                    "../controlador/cliente.agregar.editar.controlador.php",
+                    {
+                        p_datosFormulario: $("#frmgrabar").serialize()
+                    }
+                  ).done(function(resultado){                    
+		      var datosJSON = resultado;
+
+                      if (datosJSON.estado===200){
+			  swal("Exito", datosJSON.mensaje, "success");
+                          $("#btncerrar").click(); //Cerrar la ventana 
+                          listar(); //actualizar la lista
+                      }else{
+                          swal("Mensaje del sistema", resultado , "warning");
+                      }
+
+                  }).fail(function(error){
+			var datosJSON = $.parseJSON( error.responseText );
+			swal("Error", datosJSON.mensaje , "error");
+                  }) ;
+                
+            }
+	});    
+});
+
+
+$("#btnagregar").click(function(){
+    $("#txttipooperacion").val("agregar");
+    $("#txtpaterno").val("");
+    $("#txtmaterno").val("");
+    $("#txtnombre").val("");
+    $("#txtdni").val("");
+    $("#txtdireccion").val("");
+    $("#txtfijo").val("");
+    $("#txtmovil1").val("");
+    $("#txtmovil2").val("");
+    $("#txtcorreo").val("");
+    $("#txtclave").val("");
+    $("#txtweb").val("");
+    $("#cbodepartamentomodal").val("");
+    $("#cboprovinciamodal").val("");
+    $("#cbodistritomodal").val("");
+    
+    $("#titulomodal").text("Agregar nuevo cliente");
+    
+});
+
+
+$("#myModal").on("shown.bs.modal", function(){
+    $("#txtpaterno").focus();
+});
+
+function leerDatos( codigoCliente ){
+    
+    $.post
+        (
+            "../controlador/cliente.leer.datos.controlador.php",
+            {
+                p_codigoCliente: codigoCliente
+            }
+        ).done(function(resultado){
+            var datosJSON = resultado;
+            if (datosJSON.estado === 200){
+                
+                $.each(datosJSON.datos, function(i,item) {
+                    $("#txtcodigo").val( item.codigo_cliente );
+                    $("#txtpaterno").val( item.apellido_paterno );
+                    $("#txtmaterno").val( item.apellido_materno );
+                    $("#txtnombre").val( item.nombres );
+                    $("#txtdni").val( item.nro_documento_identidad );
+                    $("#txtdireccion").val( item.direccion );
+                    $("#txtfijo").val( item.telefono_fijo );
+                    $("#txtmovil1").val( item.telefono_movil1 );
+                    $("#txtmovil2").val( item.telefono_movil2 );
+                    $("#txtcorreo").val( item.email );
+                    $("#txtweb").val( item.direccion_web );
+                    $("#cbodepartamentomodal").val( item.codigo_departamento );
+                    $("#cboprovinciamodal").val( item.codigo_provincia );
+                    $("#cbodistritomodal").val( item.codigo_distrito );
+                    
+                    //Ejecuta el evento change para llenar las categorías que pertenecen a la linea seleccionada
+                    $("#cbodepartamentomodal").change();
+                    $("#cboprovinciamodal").change();
+                    $("#cbodistritomodal").change();
+                    
+                    $("#myModal").on("shown.bs.modal", function(){
+                        $("#cbodepartamentoamodal").val( item.codigo_departamento );
+                    });
+                    
+                    $("#myModal").on("shown.bs.modal", function(){
+                        $("#cboprovinciamodal").val( item.codigo_provincia );
+                    });
+                    
+                    $("#myModal").on("shown.bs.modal", function(){
+                        $("#cbodistritomodal").val( item.codigo_distrito );
+                    });
+                    
+                    $("#txttipooperacion").val("editar");
+                    
+                });
+                
+            }else{
+                swal("Mensaje del sistema", resultado , "warning");
+            }
+        })
     
 }

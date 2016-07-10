@@ -99,7 +99,7 @@ function listar(){
 }
 
 
-function eliminar(codigoArticulo){
+function eliminar(dniContacto){
    swal({
             title: "Confirme",
             text: "¿Esta seguro de eliminar el registro seleccionado?",
@@ -115,9 +115,9 @@ function eliminar(codigoArticulo){
 	function(isConfirm){
             if (isConfirm){
                 $.post(
-                    "../controlador/articulo.eliminar.controlador.php",
+                    "../controlador/contacto.eliminar.controlador.php",
                     {
-                        codigoArticulo: codigoArticulo
+                        dniContacto: dniContacto
                     }
                     ).done(function(resultado){
                         var datosJSON = resultado;   
@@ -187,47 +187,49 @@ $("#frmgrabar").submit(function(evento){
 $("#btnagregar").click(function(){
     $("#txttipooperacion").val("agregar");
     
-    $("#txtcodigo").val("");
+    $("#txtdni").val("");
+    $("#txtapellido").val("");
     $("#txtnombre").val("");
-    $("#txtprecio").val("");
-    $("#cbolineamodal").val("");
-    $("#cbocategoriamodal").val("");
-    $("#cbomarcamodal").val("");
+    $("#txttelefono").val("");
+    $("#txtemail").val("");
+    $("#cboareamodal").val("");
+    $("#cbocargomodal").val("");
     
-    $("#titulomodal").text("Agregar nuevo articulo");
+    $("#titulomodal").text("Agregar nuevo Contacto");
     
 });
-
 
 $("#myModal").on("shown.bs.modal", function(){
-    $("#txtnombre").focus();
+    $("#txtdni").focus();
 });
 
 
-function leerDatos( codigoArticulo ){
+function leerDatos( dniContacto){
     
     $.post
         (
-            "../controlador/articulo.leer.datos.controlador.php",
+            "../controlador/contacto.leer.datos.controlador.php",
             {
-                p_codigoArticulo: codigoArticulo
+                p_dni_contacto: dniContacto
             }
         ).done(function(resultado){
             var datosJSON = resultado;
             if (datosJSON.estado === 200){
                 
                 $.each(datosJSON.datos, function(i,item) {
-                    $("#txtcodigo").val( item.codigo_articulo );
-                    $("#txtnombre").val( item.nombre );
-                    $("#txtprecio").val( item.precio_venta );
-                    $("#cbolineamodal").val( item.codigo_linea );
-                    $("#cbomarcamodal").val( item.codigo_marca );
+                    $("#txtdni").val( item.dni_contacto );
+                    $("#txtapellido").val( item.apellidos );
+                    $("#txtnombre").val( item.nombres );
+                    $("#txttelefono").val( item.telefono );
+                    $("#txtemail").val( item.email );
+                    $("#cboareamodal").val( item.codigo_area );
+                    $("#cbocargomodal").val( item.codigo_cargo );
                     
                     //Ejecuta el evento change para llenar las categorías que pertenecen a la linea seleccionada
-                    $("#cbolineamodal").change();
+                    $("#cboareamodal").change();
                     
                     $("#myModal").on("shown.bs.modal", function(){
-                        $("#cbocategoriamodal").val( item.codigo_categoria );
+                        $("#cbocargomodal").val( item.codigo_cargo );
                     });
                     
                     $("#txttipooperacion").val("editar");

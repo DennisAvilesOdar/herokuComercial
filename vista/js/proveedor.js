@@ -65,6 +65,127 @@ function listar(){
     
 }
 
-$("#myModal").on("shown.bs.modal", function(){
-    $("#txtnombre").focus();
+$("#btnagregar").click(function(){
+    $("#txttipooperacion").val("agregar");
+    $("#txtruc").val("");
+    $("#txtrazon").val("");
+    $("#txtdireccion").val("");
+    $("#txttelefono").val("");
+    $("#txtlegal").val("");
+    $("#titulomodal").text("Agregar nuevo Proveedor");
 });
+
+$("#myModal").on("shown.bs.modal", function(){
+    $("#txtruc").focus();
+});
+
+function leerDatos(rucProveedor){
+    
+    $.post
+        (
+            "../controlador/proveedor.leer.datos.controlador.php",
+            {
+                p_ruc_proveedor: rucProveedor
+            }
+        ).done(function(resultado){
+            var datosJSON = resultado;
+            if (datosJSON.estado === 200){
+                
+                $.each(datosJSON.datos, function(i,item) {
+                    $("#txtruc").val( item.ruc_proveedor );
+                    $("#txtrazon").val( item.razon_social );
+                    $("#txtdireccion").val( item.direccion );
+                    $("#txttelefono").val( item.telefono );
+                    $("#txtlegal").val( item.representante_legal );
+                    $("#txttipooperacion").val("editar");
+                });
+                
+            }else{
+                swal("Mensaje del sistema", resultado , "warning");
+            }
+        })
+    
+}
+
+$("#frmgrabar").submit(function(evento){
+    evento.preventDefault();
+    
+    swal({
+		title: "Confirme",
+		text: "¿Esta seguro de grabar los datos ingresados?",
+		
+		showCancelButton: true,
+		confirmButtonColor: '#3d9205',
+		confirmButtonText: 'Si',
+		cancelButtonText: "No",
+		closeOnConfirm: false,
+		closeOnCancel: true,
+                imageUrl: "../imagenes/pregunta.png"
+	},
+	function(isConfirm){ 
+
+            if (isConfirm){ //el usuario hizo clic en el boton SI     
+                
+                //procedo a grabar
+                
+                $.post(
+                    "../controlador/proveedor.agregar.editar.controlador.php",
+                    {
+                        p_datosFormulario: $("#frmgrabar").serialize()
+                    }
+                  ).done(function(resultado){                    
+		      var datosJSON = resultado;
+
+                      if (datosJSON.estado===200){
+			  swal("Exito", datosJSON.mensaje, "success");
+                          $("#btncerrar").click(); //Cerrar la ventana 
+                          listar(); //actualizar la lista
+                      }else{
+                          swal("Mensaje del sistema", resultado , "warning");
+                      }
+
+                  }).fail(function(error){
+			var datosJSON = $.parseJSON( error.responseText );
+			swal("Error", datosJSON.mensaje , "error");
+                  }) ;
+                
+            }
+	});    
+});
+
+function eliminar(rucProveedor){
+   swal({
+            title: "Confirme",
+            text: "¿Esta seguro de eliminar el registro seleccionado?",
+
+            showCancelButton: true,
+            confirmButtonColor: '#d93f1f',
+            confirmButtonText: 'Si',
+            cancelButtonText: "No",
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            imageUrl: "../imagenes/eliminar.png"
+	},
+	function(isConfirm){
+            if (isConfirm){
+                $.post(
+                    "../controlador/proveedor.eliminar.controlador.php",
+                    {
+                        p_ruc_proveedor: rucProveedor
+                    }
+                    ).done(function(resultado){
+                        var datosJSON = resultado;   
+                        if (datosJSON.estado===200){ //ok
+                            listar();
+                            swal("Exito", datosJSON.mensaje , "success");
+                        }
+
+                    }).fail(function(error){
+                        var datosJSON = $.parseJSON( error.responseText );
+                        swal("Error", datosJSON.mensaje , "error");
+                    });
+                
+            }
+	});
+   
+}

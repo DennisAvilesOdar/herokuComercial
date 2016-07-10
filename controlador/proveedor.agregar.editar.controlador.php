@@ -1,6 +1,6 @@
 <?php
 
-require_once '../negocio/Contacto.clase.php';
+require_once '../negocio/Proveedor.clase.php';
 require_once '../util/funciones/Funciones.clase.php';
 
 if (! isset($_POST["p_datosFormulario"]) ){
@@ -15,27 +15,26 @@ parse_str($datosFormulario, $datosFormularioArray);
 
 
 
-
+////quitar
 //print_r($datosFormularioArray);
 //exit();
 
 try {
-    $objContacto = new Contacto();
-    $objContacto->setDni_contacto( $datosFormularioArray["txtdni"] );
-    $objContacto->setApellidos( $datosFormularioArray["txtapellido"] );
-    $objContacto->setNombres( $datosFormularioArray["txtnombre"] );
-    $objContacto->setTelefono( $datosFormularioArray["txttelefono"] );
-    $objContacto->setEmail( $datosFormularioArray["txtemail"] );
-    $objContacto->setCodigo_area( $datosFormularioArray["cboareamodal"] );
-    $objContacto->setCodigo_cargo( $datosFormularioArray["cbocargomodal"] );
+    $objProveedor = new Proveedor();
+    $objProveedor->setRuc_proveedor( $datosFormularioArray["txtruc"] );
+    $objProveedor->setRazon_social( $datosFormularioArray["txtrazon"] );
+    $objProveedor->setDireccion( $datosFormularioArray["txtdireccion"] );
+    $objProveedor->setTelefono( $datosFormularioArray["txttelefono"] );
+    $objProveedor->setRepresentante_legal( $datosFormularioArray["txtlegal"] );
+    
     
     if ($datosFormularioArray["txttipooperacion"]=="agregar"){
-        $resultado = $objContacto->agregar();
+        $resultado = $objProveedor->agregar();
         if ($resultado==true){
             Funciones::imprimeJSON(200, "Grabado correctamente", "");
         }
     }else{
-        $resultado = $objContacto->editar();
+        $resultado = $objProveedor->editar();
         if ($resultado==true){
             Funciones::imprimeJSON(200, "Grabado correctamente", "");
         }

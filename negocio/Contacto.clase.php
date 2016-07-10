@@ -97,12 +97,12 @@ class Contacto extends Conexion {
             
     }
     
-    public function eliminar( $p_codigoArticulo ){
+    public function eliminar( $dniContacto ){
         $this->dblink->beginTransaction();
         try {
-            $sql = "delete from articulo where codigo_articulo = :p_codigoArticulo";
+            $sql = "delete from contacto where dni_contacto = :p_dni_contacto";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigoArticulo", $p_codigoArticulo);
+            $sentencia->bindParam(":p_dni_contacto", $dniContacto);
             $sentencia->execute();
             
             $this->dblink->commit();
@@ -120,16 +120,6 @@ class Contacto extends Conexion {
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select dni_contacto from contacto where dni_contacto = :p_dni_contacto";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_dni_contacto", $this->getDni_contacto());
-            $sentencia->execute();
-            $resultado = $sentencia->fetch();
-            
-            if ($sentencia->rowCount()){
-                if ($this->getDni_contacto() == $resultado["dni_contacto"]){
-                    Funciones::imprimeJSON(500, "DNI YA EXISTE", "");
-                }else{
                     $sql = "
                             INSERT INTO public.contacto(
                                     dni_contacto, 
@@ -161,16 +151,14 @@ class Contacto extends Conexion {
                     $sentencia->bindParam(":p_email", $this->getEmail());
                     $sentencia->bindParam(":p_codigo_area", $this->getCodigo_area());
                     $sentencia->bindParam(":p_codigo_cargo", $this->getCodigo_cargo());
-
                     //Ejecutar la sentencia preparada
                     $sentencia->execute();
-                    
+
                     $this->dblink->commit();
                 
                     return true; //significa que todo se ha ejecutado correctamente
                 }                
-            }
-        } catch (Exception $exc) {
+         catch (Exception $exc) {
             $this->dblink->rollBack(); //Extornar toda la transacción
             throw $exc;
         }
@@ -180,27 +168,15 @@ class Contacto extends Conexion {
     }
     
     
-    public function leerDatos($p_codigoArticulo) {
+    public function leerDatos($p_dni_contacto) {
         try {
-            $sql = "
-                    select
-                            a.*,
-                            c.codigo_linea
-                    from
-                            articulo a 
-                            inner join categoria c on ( a.codigo_categoria = c.codigo_categoria )
-                    where
-                            a.codigo_articulo = :p_codigo_articulo
-                ";
+            $sql = "select * from contacto where dni_contacto = :p_dni_contacto";
             
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigo_articulo", $p_codigoArticulo);
+            $sentencia->bindParam(":p_dni_contacto", $p_dni_contacto);
             $sentencia->execute();
-            
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
             return $resultado;
-            
         } catch (Exception $exc) {
             throw $exc;
         }
@@ -212,13 +188,10 @@ class Contacto extends Conexion {
         
         try {
            $sql = " 
-                    update articulo set
-                        nombre              = :p_nombre,
-                        precio_venta        = :p_precio_venta,
-                        codigo_categoria    = :p_codigo_categoria,
-                        codigo_marca        = :p_codigo_marca
-                    where
-                        codigo_articulo     = :p_codigo_articulo
+                    UPDATE public.contacto
+                        SET apellidos = :p_apellidos, nombres = :p_nombres, telefono = :p_telefono, email = :p_email, 
+                            codigo_area = :p_codigo_area, codigo_cargo = :p_codigo_cargo
+                      WHERE dni_contacto = :p_dni_contacto;
                ";
            
            
@@ -226,11 +199,13 @@ class Contacto extends Conexion {
             $sentencia = $this->dblink->prepare($sql);
 
             //Asignar un valor a cada parametro
-            $sentencia->bindParam(":p_nombre", $this->getNombre());
-            $sentencia->bindParam(":p_precio_venta", $this->getPrecioVenta());
-            $sentencia->bindParam(":p_codigo_categoria", $this->getCodigoCategoria());
-            $sentencia->bindParam(":p_codigo_marca", $this->getCodigoMarca());
-            $sentencia->bindParam(":p_codigo_articulo", $this->getCodigoArticulo());
+            $sentencia->bindParam(":p_apellidos", $this->getApellidos());
+            $sentencia->bindParam(":p_nombres", $this->getNombres());
+            $sentencia->bindParam(":p_telefono", $this->getTelefono());
+            $sentencia->bindParam(":p_email", $this->getEmail());
+            $sentencia->bindParam(":p_codigo_area", $this->getCodigo_area());
+            $sentencia->bindParam(":p_codigo_cargo", $this->getCodigo_cargo());
+            $sentencia->bindParam(":p_dni_contacto", $this->getDni_contacto());
 
             //Ejecutar la sentencia preparada
             $sentencia->execute();

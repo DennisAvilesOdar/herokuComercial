@@ -27,7 +27,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de clientes</h1>
+                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de artículos</h1>
                 </section>
 
                 <section class="content">
@@ -66,6 +66,8 @@
 				  	<input type="text" name="txtmovil2" id="txtmovil2" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>Email <font color = "red">*</font>
 				  	<input type="text" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Clave <font color = "red">*</font>
+				  	<input type="text" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>Direccion Web <font color = "red">*</font>
 				  	<input type="text" name="txtweb" id="txtweb" class="form-control input-sm" placeholder="" required=""><p>
 				  <p>

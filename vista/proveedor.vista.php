@@ -44,15 +44,15 @@
 			      <div class="modal-body">
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
 				  <p>Ruc Proveedor <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+				  	<input type="text" name="txtruc" id="txtruc" class="form-control input-sm" placeholder="" required=""><p>
 				  <p>Razon Social <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+				  	<input type="text" name="txtrazon" id="txtrazon" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>Direccion <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+				  	<input type="text" name="txtdireccion" id="txtdireccion" class="form-control input-sm" placeholder="" required=""><p>          
                                   <p>Telefono <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+				  	<input type="text" name="txttelefono" id="txttelefono" class="form-control input-sm" placeholder="" required=""><p>          
                                   <p>Representante Legal <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+				  	<input type="text" name="txtlegal" id="txtlegal" class="form-control input-sm" placeholder="" required=""><p>          
 				  <p>
 				      <font color = "red">* Campos obligatorios</font>
 				  </p>
