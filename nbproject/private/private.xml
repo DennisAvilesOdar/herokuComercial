@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/comercial-2/controlador/distrito.cargar.combo.controlador.php</file>
-            <file>file:/Applications/MAMP/htdocs/comercial-2/negocio/Distrito.clase.php</file>
-            <file>file:/Applications/MAMP/htdocs/comercial-2/negocio/Categoria.clase.php</file>
-            <file>file:/Applications/MAMP/htdocs/comercial-2/vista/js/cargar-combos.js</file>
-            <file>file:/Applications/MAMP/htdocs/comercial-2/vista/js/distrito.js</file>
+            <file>file:/Applications/MAMP/htdocs/comercial-2/negocio/Personal.clase.php</file>
+            <file>file:/Applications/MAMP/htdocs/comercial-2/vista/js/proveedor.js</file>
+            <file>file:/Applications/MAMP/htdocs/comercial-2/vista/js/personal.js</file>
+            <file>file:/Applications/MAMP/htdocs/comercial-2/controlador/personal.agregar.editar.controlador.php</file>
         </group>
     </open-files>
 </project-private>

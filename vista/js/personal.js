@@ -103,3 +103,145 @@ function listar(){
     });
     
 }
+
+$("#btnagregar").click(function(){
+    $("#txttipooperacion").val("agregar");
+    $("#txtdni").val("");
+    $("#txtapellidopaterno").val("");
+    $("#txtapellidomaterno").val("");
+    $("#txtnombre").val("");
+    $("#txtdireccion").val("");
+    $("#txtfijo").val("");
+    $("#txtmovil1").val("");
+    $("#txtmovil2").val("");
+    $("#txtcorreo").val("");
+    $("#cboareamodal").val("");
+    $("#titulomodal").text("Agregar nuevo Proveedor");
+});
+
+$("#myModal").on("shown.bs.modal", function(){
+    $("#txtdni").focus();
+});
+
+$("#frmgrabar").submit(function(evento){
+    evento.preventDefault();
+    
+    swal({
+		title: "Confirme",
+		text: "¿Esta seguro de grabar los datos ingresados?",
+		
+		showCancelButton: true,
+		confirmButtonColor: '#3d9205',
+		confirmButtonText: 'Si',
+		cancelButtonText: "No",
+		closeOnConfirm: false,
+		closeOnCancel: true,
+                imageUrl: "../imagenes/pregunta.png"
+	},
+	function(isConfirm){ 
+
+            if (isConfirm){ //el usuario hizo clic en el boton SI     
+                
+                //procedo a grabar
+                
+                $.post(
+                    "../controlador/personal.agregar.editar.controlador.php",
+                    {
+                        p_datosFormulario: $("#frmgrabar").serialize()
+                    }
+                  ).done(function(resultado){                    
+		      var datosJSON = resultado;
+
+                      if (datosJSON.estado===200){
+			  swal("Exito", datosJSON.mensaje, "success");
+                          $("#btncerrar").click(); //Cerrar la ventana 
+                          listar(); //actualizar la lista
+                      }else{
+                          swal("Mensaje del sistema", resultado , "warning");
+                      }
+
+                  }).fail(function(error){
+			var datosJSON = $.parseJSON( error.responseText );
+			swal("Error", datosJSON.mensaje , "error");
+                  }) ;
+                
+            }
+	});    
+});
+
+function leerDatos(dni){
+    
+    $.post
+        (
+            "../controlador/personal.leer.datos.controlador.php",
+            {
+                p_dni: dni
+            }
+        ).done(function(resultado){
+            var datosJSON = resultado;
+            if (datosJSON.estado === 200){
+                
+                $.each(datosJSON.datos, function(i,item) {
+                    $("#txtdni").val( item.dni );
+                    $("#txtapellidopaterno").val( item.apellido_paterno );
+                    $("#txtapellidomaterno").val( item.apellido_materno );
+                    $("#txtnombre").val( item.nombres );
+                    $("#txtdireccion").val( item.direccion );
+                    $("#txtfijo").val( item.telefono_fijo );
+                    $("#txtmovil1").val( item.telefono_movil1 );
+                    $("#txtmovil2").val( item.telefono_movil2 );
+                    $("#txtcorreo").val( item.email );
+                    $("#cboareamodal").val( item.codigo_cargo );
+                    $("#txttipooperacion").val("editar");
+                    
+                    $("#cboareamodal").change();
+                    
+                    $("#myModal").on("shown.bs.modal", function(){
+                        $("#cbocargomodal").val( item.codigo_area );
+                    });
+                });
+                
+            }else{
+                swal("Mensaje del sistema", resultado , "warning");
+            }
+        })
+    
+}
+
+
+function eliminar(dni){
+   swal({
+            title: "Confirme",
+            text: "¿Esta seguro de eliminar el registro seleccionado?",
+
+            showCancelButton: true,
+            confirmButtonColor: '#d93f1f',
+            confirmButtonText: 'Si',
+            cancelButtonText: "No",
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            imageUrl: "../imagenes/eliminar.png"
+	},
+	function(isConfirm){
+            if (isConfirm){
+                $.post(
+                    "../controlador/personal.eliminar.controlador.php",
+                    {
+                        p_dni: dni
+                    }
+                    ).done(function(resultado){
+                        var datosJSON = resultado;   
+                        if (datosJSON.estado===200){ //ok
+                            listar();
+                            swal("Exito", datosJSON.mensaje , "success");
+                        }
+
+                    }).fail(function(error){
+                        var datosJSON = $.parseJSON( error.responseText );
+                        swal("Error", datosJSON.mensaje , "error");
+                    });
+                
+            }
+	});
+   
+}
