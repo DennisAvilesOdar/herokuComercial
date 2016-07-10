@@ -30,8 +30,9 @@ $("#cbodepartamentomodal").change(function(){
     cargarComboProvincia("#cbocategoriamodal", "todos", codigoDepartamento);
 });
 $("#cboprovinciamodal").change(function(){
+    var codigoDepartamento = $("#cbodepartamentomodal").val();
     var codigoProvincia = $("#cboprovinciamodal").val();
-    cargarComboDistrito("#cbodistritomodal", "todos", codigoProvincia);
+    cargarComboDistrito("#cbodistritomodal", "todos", codigoDepartamento,codigoProvincia);
 });
 
 function listar(){
@@ -68,20 +69,18 @@ function listar(){
             html += '<table id="tabla-listado" class="table table-bordered table-striped">';
             html += '<thead>';
             html += '<tr style="background-color: #ededed; height:25px;">';
-            html += '<th>CODIGO CLIENTE</th>';
-            html += '<th>APELLIDO PATERNO</th>';
-            html += '<th>APELLIDO MATERNO</th>';
-            html += '<th>NOMBRE</th>';
+            html += '<th>CODIGO</th>';
+            html += '<th>CLIENTE</th>';
             html += '<th>DNI</th>';
-            html += '<th>DIRECCION</th>';
-            html += '<th>TELEFONO FIJO</th>';
-            html += '<th>CELULAR 1</th>';
-            html += '<th>CELULAR 2</th>';
+            html += '<th>DIR</th>';
+            html += '<th>TELE</th>';
+            html += '<th>CEL1</th>';
+            html += '<th>CEL2</th>';
             html += '<th>EMAIL</th>';
-            html += '<th>DIRECCION WEB</th>';
-            html += '<th>DEPARTAMENTO</th>';
-            html += '<th>PROVINCIA</th>';
-            html += '<th>DISTRITO</th>';
+            html += '<th>WEB</th>';
+            html += '<th>DEPART</th>';
+            html += '<th>PROV</th>';
+            html += '<th>DIST</th>';
 	    html += '<th style="text-align: center">OPCIONES</th>';
             html += '</tr>';
             html += '</thead>';

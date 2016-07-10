@@ -40,12 +40,12 @@ class Distrito extends Conexion{
         $this->codigoDepartamento = $codigoDepartamento;
     }
     
-    public function cargarListaDatos($p_codigo_provincia,$p_codigo_departamento){
+    public function cargarListaDatos($p_codigo_departamento,$p_codigo_provincia){
 	try {
-            $sql = " select * from distrito where codigo_provincia = :p_codigo_provincia and codigo_departamento = :p_codigo_departamento order by 2";
+            $sql = " select * from distrito where codigo_departamento = :p_codigo_departamento and codigo_provincia = :p_codigo_provincia order by 2";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigo_provincia", $p_codigo_provincia);
             $sentencia->bindParam(":p_codigo_departamento", $p_codigo_departamento);
+            $sentencia->bindParam(":p_codigo_provincia", $p_codigo_provincia);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;

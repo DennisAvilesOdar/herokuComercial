@@ -112,6 +112,19 @@ class Personal extends Conexion{
         $this->dni_jefe = $dni_jefe;
     }
     
-    
+    public function listar( $p_codigo_area, $p_codigo_cargo) {
+        try {
+            $sql = "select * from f_listar_personal(:p_codigo_area,:p_codigo_cargo)";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_codigo_area", $p_codigo_area);
+            $sentencia->bindParam(":p_codigo_cargo", $p_codigo_cargo);
+            $sentencia->execute();            
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);            
+            return $resultado;
+            
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
 }

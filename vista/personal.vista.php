@@ -27,7 +27,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de artículos</h1>
+                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de personal</h1>
                 </section>
 
                 <section class="content">
@@ -43,37 +43,33 @@
 			      </div>
 			      <div class="modal-body">
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
-				  <div class="row">
-				    <div class="col-xs-3">
-					<p>Código artículo<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
-				    </div>
-				  </div>
+                                  <p>DNI <font color = "red">*</font>
+				  	<input type="text" name="txtdni" id="txtdni" class="form-control input-sm" placeholder="" required=""><p>          
+                                  <p>Apellido Paterno <font color = "red">*</font>
+				  	<input type="text" name="txtapellidopaterno" id="txtapellidopaterno" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Apellido Materno <font color = "red">*</font>
+				  	<input type="text" name="txtapellidomaterno" id="txtapellidomaterno" class="form-control input-sm" placeholder="" required=""><p>          
 				  <p>Nombre <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
-				  <div class="row">
-				    <div class="col-xs-3">
-					<p>
-					    Precio de Venta <font color = "red">*</font>
-					    <input type="text" name="txtprecio" id="txtprecio" class="form-control input-sm" placeholder="" required="">
-					<p>
-				    </div>
-				  </div>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Direccion <font color = "red">*</font>
+				  	<input type="text" name="txtdireccion" id="txtdireccion" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Telefono Fijo <font color = "red">*</font>
+				  	<input type="text" name="txtfijo" id="txtfijo" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Celular 1 <font color = "red">*</font>
+				  	<input type="text" name="txtmovil1" id="txtmovil1" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Celular 2 <font color = "red">*</font>
+				  	<input type="text" name="txtmovil2" id="txtmovil2" class="form-control input-sm" placeholder="" required=""><p>          
+				  <p>Email <font color = "red">*</font>
+				  	<input type="email" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>                    
 				  <p>
-				      Línea <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbolineamodal" id="cbolineamodal" required="" >
-
-				      </select>
-				  </p>
-                                  
-				  <p>
-				      Categoría <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbocategoriamodal" id="cbocategoriamodal" required="" >
+				      Area <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cboareamodal" id="cboareamodal" required="" >
 
 				      </select>
 				  </p>
 				  <p>
-				      Marca <font color = "red">*</font>
-				      <select class="form-control input-sm" name="cbomarcamodal" id="cbomarcamodal" required="" >
+				      Cargo <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cbocargomodal" id="cbocargomodal" required="" >
 
 				      </select>
 				  </p>
@@ -94,16 +90,13 @@
 
                     <div class="row">
                         <div class="col-xs-3">
-                            <select id="cbolinea" class="form-control input-sm"></select>
+                            <select id="cboarea" class="form-control input-sm"></select>
                         </div>
                         <div class="col-xs-3">
-                            <select id="cbocategoria" class="form-control input-sm"></select>
+                            <select id="cbocargo" class="form-control input-sm"></select>
                         </div>
                         <div class="col-xs-3">
-                            <select id="cbomarca" class="form-control input-sm"></select>
-                        </div>
-                        <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Agregar nuevo artículo</button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Agregar nuevo personal</button>
                         </div>
                     </div>
                     <p>
@@ -124,7 +117,7 @@
 	
 	<!--JS-->
 	<script src="js/cargar-combos.js" type="text/javascript"></script>
-	<script src="js/articulo.js" type="text/javascript"></script>
+        <script src="js/personal.js" type="text/javascript"></script>
 
     </body>
 </html>
