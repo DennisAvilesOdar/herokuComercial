@@ -318,4 +318,64 @@ class Cliente extends Conexion {
             throw $exc;
         }
     }
+    
+    public function editar() {
+        $this->dblink->beginTransaction();
+        
+        try {
+           $sql = " 
+                    UPDATE cliente SET 
+                                    apellido_paterno = :p_apellido_paterno, 
+                                    apellido_materno = :p_apellido_materno, 
+                                    nombres = :p_nombres, 
+                                    nro_documento_identidad = :p_nro_documento_identidad, 
+                                    direccion = :p_direccion, 
+                                    telefono_fijo = :p_telefono_fijo, 
+                                    telefono_movil1 = :p_telefono_movil1, 
+                                    telefono_movil2 = :p_telefono_movil2, 
+                                    email = :p_email, 
+                                    direccion_web = :p_direccion_web, 
+                                    codigo_departamento = :p_codigo_departamento, 
+                                    codigo_provincia = :p_codigo_provincia, 
+                                    codigo_distrito = :p_codigo_distrito, 
+                                    clave = :p_clave
+                     WHERE codigo_cliente = :p_codigo_cliente
+               ";
+           
+           
+           //Preparar la sentencia
+            $sentencia = $this->dblink->prepare($sql);
+
+            //Asignar un valor a cada parametro
+            $sentencia->bindParam(":p_apellido_paterno", $this->getApellido_paterno());
+            $sentencia->bindParam(":p_apellido_materno", $this->getApellido_materno());
+            $sentencia->bindParam(":p_nombres", $this->getNombres());
+            $sentencia->bindParam(":p_nro_documento_identidad", $this->getNro_documento_identidad());
+            $sentencia->bindParam(":p_direccion", $this->getDireccion());
+            $sentencia->bindParam(":p_telefono_fijo", $this->getDireccion());
+            $sentencia->bindParam(":p_telefono_movil1", $this->getDireccion());
+            $sentencia->bindParam(":p_telefono_movil2", $this->getDireccion());
+            $sentencia->bindParam(":p_email", $this->getDireccion());
+            $sentencia->bindParam(":p_direccion_web", $this->getDireccion());
+            $sentencia->bindParam(":p_codigo_departamento", $this->getDireccion());
+            $sentencia->bindParam(":p_codigo_provincia", $this->getDireccion());
+            $sentencia->bindParam(":p_codigo_distrito", $this->getDireccion());
+            $sentencia->bindParam(":p_clave", $this->getDireccion());
+
+            //Ejecutar la sentencia preparada
+            $sentencia->execute();
+            
+            
+            $this->dblink->commit();
+                
+            return true;
+            
+        } catch (Exception $exc) {
+           $this->dblink->rollBack();
+           throw $exc;
+        }
+        
+        return false;
+            
+    }
 }
