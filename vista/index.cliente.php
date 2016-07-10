@@ -92,11 +92,6 @@
     <div class="box-footer">
             El acceso proporciona información de carácter CONFIDENCIAL, por esta razón durante la sesión, todas las acciones del cliente pueden AUDITADAS; es decir, se generarán reportes de uso y son de responsabilidad absoluta del usuario. No debe compartir su usuario ni contraseña, ni proporcionar información a personas ajenas a estas, toda consulta deberá ser realizada mediante documentación sustentatoria. El USUARIO y CONTRASEÑA son personales e intransferibles. Tome sus medidas de seguridad.
     </div>
-  
-  <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-
- 
                 <section class="content">
 		    <!-- INICIO del formulario modal -->
 		    <small>
@@ -166,7 +161,6 @@
 		    </form>
 			</small>
                 </section>
-            </div>
   
             <?php
 	    include 'scripts.vista.php';
