@@ -79,7 +79,7 @@
                 </div><!-- /.col -->
               </div>
                <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Registrate ya!</button>
+                            <button type="button" class="btn btn-success btn-foursquare" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Registrate ya!</button>
                         </div>
             </form>
             
