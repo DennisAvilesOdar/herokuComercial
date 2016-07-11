@@ -232,8 +232,9 @@ function leerDatos( codigoCliente ){
                     $("#cbodepartamentomodal").val( item.codigo_departamento );
                     $("#cboprovinciamodal").val( item.codigo_provincia );
                     $("#cbodistritomodal").val( item.codigo_distrito );
+                    $("#txtclave").val( item.clave );
                     
-                    //Ejecuta el evento change para llenar las categorías que pertenecen a la linea seleccionada
+                    //Ejecuta el evento change para llenar las categorÌas que pertenecen a la linea seleccionada
                     $("#cbodepartamentomodal").change();
                     $("#cboprovinciamodal").change();
                     $("#cbodistritomodal").change();
@@ -257,6 +258,6 @@ function leerDatos( codigoCliente ){
             }else{
                 swal("Mensaje del sistema", resultado , "warning");
             }
-        })
+        });
     
 }
