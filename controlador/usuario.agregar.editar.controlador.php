@@ -26,7 +26,7 @@ try {
     $objUsuario->setClave($clmd5);
     
     if ($datosFormularioArray["txttipooperacion"]=="agregar"){
-        $resultado = $objCliente->agregar();
+        $resultado = $objUsuario->agregar();
         if ($resultado==true){
             Funciones::imprimeJSON(200, "Grabado correctamente", "");
         }
