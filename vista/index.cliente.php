@@ -60,7 +60,7 @@
                 <input type="email" class="form-control" placeholder="Cliente" autofocus="" name="txtcliente" required="" value="<?php echo $loginUsuario; ?>" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
               </div>
-                <h5>  Conraseña:</h5> 
+                <h5>  Contraseña:</h5> 
               <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Contraseña" name="txtclave"/>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -95,7 +95,7 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="titulomodal">TÌtulo de la ventana</h4>
+                                <font color="purple"><h2><b>Registro de Clientes</b></h2></font>
 			      </div>
 			      <div class="modal-body">
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
@@ -104,35 +104,35 @@
 					<p>CÛdigo Cliente<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
 				    </div>
 				  </div>
-				  <p>Apellido Paterno <font color = "green">*</font>
+                                  <p><font color="black"><b>Apellido Paterno</b></font> <font color = "purple">*</font>
 				  	<input type="text" name="txtpaterno" id="txtpaterno" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Apellido Materno <font color = "green">*</font>
+                                        <p><font color="black"><b>Apellido Materno</b></font><font color = "purple">*</font>
 				  	<input type="text" name="txtmaterno" id="txtmaterno" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Nombres <font color = "green">*</font>
+                                        <p><font color="black"><b>Nombres</b></font><font color = "purple">*</font>
 				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>DNI <font color = "green">*</font>
+                                        <p><font color="black"><b>DNI</b></font><font color = "purple">*</font>
 				  	<input type="text" name="txtDNI" id="txtDNI" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>Direccion <font color = "green">*</font>
+                                        <p><font color="black"><b>Direccion</b></font><font color = "purple">*</font>
 				  	<input type="text" name="txtdireccion" id="txtdireccion" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>Email <font color = "green">*</font>
+                                        <p><font color="black"><b>Email</b></font><font color = "purple">*</font>
 				  	<input type="text" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Clave <font color = "green">*</font>
+                                        <p><font color="black"><b>Clave</b></font><font color = "purple">*</font>
 				  	<input type="password" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>                               
 				  <p>
-				      Departamento <font color = "green">*</font>
+                                      <font color="black"><b>Departamento</b></font><font color = "purple">*</font>
 				      <select class="form-control input-sm" name="cbodepartamentomodal" id="cbodepartamentomodal" required="" >
 
 				      </select>
 				  </p>
                                   
 				  <p>
-				      Provincia <font color = "green">*</font>
+				      <font color="black"><b>Provincia</b></font><font color = "purple">*</font>
 				      <select class="form-control input-sm" name="cboprovinciamodal" id="cboprovinciamodal" required="" >
 
 				      </select>
 				  </p>
 				  <p>
-                                  Distrito <font color = "green">*</font>
+                                  <font color="black"><b>Distrito</b></font><font color = "purple">*</font>
 				      <select class="form-control input-sm" name="cbodistritomodal" id="cbodistritomodal" required="" >
 
 				      </select>
@@ -142,11 +142,11 @@
                                     <input type="checkbox" name="chkrecordar" value="S"> Aceptar acuerdo
                                   </label>
 				  <p>
-				      <font color = "green">* Campos obligatorios</font>
+				      <font color = "purple">* Campos obligatorios</font>
 				  </p>
 			      </div>
                                 <div class="modal-footer">
-				  <button type="submit" class="btn btn-success" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
+				  <button type="submit" class="btn btn-bitbucket" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
 				  <button type="button" class="btn btn-default" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
 			      </div>
 			    </div>
