@@ -45,12 +45,17 @@
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
 				  <div class="row">
 				    <div class="col-xs-3">
-					<p>Código Area<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
+					<p>Código Usuario<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
 				    </div>
 				  </div>
-				  <p>Nombre <font color = "red">*</font>
+				  <p>Dni Usuari <font color = "red">*</font>
 				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
-				  <p>
+				  <p>Nombre Completo<font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+                                  <p>Estado <font color = "red">*</font>
+				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+                                  
+                                  <p>
 				      <font color = "red">* Campos obligatorios</font>
 				  </p>
 			      </div>
