@@ -17,13 +17,13 @@ $datosJSONDetalle = $_POST["p_datosJSONDetalle"];
 //Convertir todos los datos que llegan concatenados a un array
 parse_str($datosFormulario, $datosFormularioArray);
 
-echo '<pre>';
-print_r($datosJSONDetalle);
-echo '</pre>';
-echo '<pre>';
-print_r($datosFormularioArray);
-echo '</pre>';
-exit();
+//echo '<pre>';
+//print_r($datosJSONDetalle);
+//echo '</pre>';
+//echo '<pre>';
+//print_r($datosFormularioArray);
+//echo '</pre>';
+//exit();
 
 try {
 $objVenta = new Compra();
