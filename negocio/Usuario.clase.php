@@ -40,7 +40,7 @@ class Usuario extends Conexion{
                     usuario.codigo_usuario,
                     usuario.dni_usuario,
                     (personal.apellido_paterno||' '||personal.apellido_materno||' ,'||personal.nombres) as nombre_completo,
-                    usuario.estado
+                    (when case usuario.estado = 'A' then 'Activo' else 'Inactivo' end) as estado
                   FROM 
                     public.usuario, 
                     public.personal
