@@ -266,7 +266,7 @@ function cargarComboPersonal(p_nombreCombo, p_tipo){
 
             
             $.each(datosJSON.datos, function(i,item) {
-                html += '<option value="'+item.dni+'">'+item.dni+'</option>';
+                html += '<option value="'+item.dni+'">'+item.nombre+'</option>';
             });
             
             $(p_nombreCombo).html(html);

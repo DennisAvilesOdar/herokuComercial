@@ -272,7 +272,8 @@ class Personal extends Conexion{
     
     public function cargarListaDatos(){
         try {
-            $sql = "select dni from personal order by 1";
+            $sql = "select dni, (apellido_paterno||' '||apellido_materno||' ,'||nombres) as nombre
+                from personal order by 1";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll();
