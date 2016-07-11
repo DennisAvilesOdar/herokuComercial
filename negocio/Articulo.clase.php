@@ -68,6 +68,24 @@ class Articulo extends Conexion {
         }
     }
     
+    public function listar2( $p_codigoLinea, $p_codigoCategoria, $p_codigoMarca ) {
+        try {
+            $sql = "select * from f_listar_articulo_cliente(:p_codigoLinea, :p_codigoCategoria, :p_codigoMarca)";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_codigoLinea", $p_codigoLinea);
+            $sentencia->bindParam(":p_codigoCategoria", $p_codigoCategoria);
+            $sentencia->bindParam(":p_codigoMarca", $p_codigoMarca);
+            $sentencia->execute();
+            
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+            
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+    
     public function eliminar( $p_codigoArticulo ){
         $this->dblink->beginTransaction();
         try {
