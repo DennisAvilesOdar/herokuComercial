@@ -95,54 +95,54 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="titulomodal">Título de la ventana</h4>
+				<h4 class="modal-title" id="titulomodal">TÌtulo de la ventana</h4>
 			      </div>
 			      <div class="modal-body">
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
 				  <div class="row">
 				    <div class="col-xs-3">
-					<p>Código Cliente<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
+					<p>CÛdigo Cliente<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
 				    </div>
 				  </div>
-				  <p>Apellido Paterno <font color = "red">*</font>
+				  <p>Apellido Paterno <font color = "green">*</font>
 				  	<input type="text" name="txtpaterno" id="txtpaterno" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Apellido Materno <font color = "red">*</font>
+                                  <p>Apellido Materno <font color = "green">*</font>
 				  	<input type="text" name="txtmaterno" id="txtmaterno" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Nombres <font color = "red">*</font>
+                                  <p>Nombres <font color = "green">*</font>
 				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>DNI <font color = "red">*</font>
+                                  <p>DNI <font color = "green">*</font>
 				  	<input type="text" name="txtDNI" id="txtDNI" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>Direccion <font color = "red">*</font>
+                                  <p>Direccion <font color = "green">*</font>
 				  	<input type="text" name="txtdireccion" id="txtdireccion" class="form-control input-sm" placeholder="" required=""><p>                                 
-                                  <p>Email <font color = "red">*</font>
+                                  <p>Email <font color = "green">*</font>
 				  	<input type="text" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Clave <font color = "red">*</font>
-				  	<input type="text" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>                               
+                                  <p>Clave <font color = "green">*</font>
+				  	<input type="password" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>                               
 				  <p>
-				      Departamento <font color = "red">*</font>
+				      Departamento <font color = "green">*</font>
 				      <select class="form-control input-sm" name="cbodepartamentomodal" id="cbodepartamentomodal" required="" >
 
 				      </select>
 				  </p>
                                   
 				  <p>
-				      Provincia <font color = "red">*</font>
+				      Provincia <font color = "green">*</font>
 				      <select class="form-control input-sm" name="cboprovinciamodal" id="cboprovinciamodal" required="" >
 
 				      </select>
 				  </p>
 				  <p>
-				      Distrito <font color = "red">*</font>
+                                  Distrito <font color = "green">*</font>
 				      <select class="form-control input-sm" name="cbodistritomodal" id="cbodistritomodal" required="" >
 
 				      </select>
 				  </p>
                                   
                                   <label>
-                        <input type="checkbox" name="chkrecordar" value="S"> Aceptar acuerdo
-                    </label>
+                                    <input type="checkbox" name="chkrecordar" value="S"> Aceptar acuerdo
+                                  </label>
 				  <p>
-				      <font color = "red">* Campos obligatorios</font>
+				      <font color = "green">* Campos obligatorios</font>
 				  </p>
 			      </div>
                                 <div class="modal-footer">
