@@ -94,7 +94,7 @@
 	?>
 	
 	<!--JS-->
-<!--	<script src="js/cargar-combos.js" type="text/javascript"></script>-->
+	<script src="js/cargar-combos.js" type="text/javascript"></script>
         <script src="js/usuario.js" type="text/javascript"></script>
 
     </body>
