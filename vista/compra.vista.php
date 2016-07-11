@@ -1,5 +1,5 @@
 <?php
-    require_once 'sesion.validar.vista.php';
+    require_once 'sesion.validar.cliente.vista.php';
     
     require_once '../util/funciones/definiciones.php';
     

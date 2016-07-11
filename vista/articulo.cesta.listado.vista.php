@@ -1,5 +1,5 @@
 <?php
-    require_once 'sesion.validar.vista.php';
+    require_once 'sesion.validar.cliente.vista.php';
     
     require_once '../util/funciones/definiciones.php';
 ?>
@@ -20,10 +20,6 @@
     <body class="skin-green layout-top-nav">
         <!-- Site wrapper -->
         <div class="wrapper">
-
-            <?php
-                include 'cabecera.vista.php';
-            ?>
 
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
