@@ -19,11 +19,11 @@ $mail->isSMTP();
 $mail->SMTPAuth = true;
 
 //datos del correo
-$mail->Username = "amithsuo10gn@hotmail.com";
+$mail->Username = "diegoperales_9@hotmail.com";
 $mail->Host = "smtp-mail.outlook.com";
 $mail->SMTPSecure = 'TLS';
 $mail->Port = 587;
-$mail->Password = "lydianMithsuo2";
+$mail->Password = "28dediciembre";
 
 $mail->From = "amithsuo10gn@hotmail.com";
 $mail->FromName = "Adrian Garcia";
