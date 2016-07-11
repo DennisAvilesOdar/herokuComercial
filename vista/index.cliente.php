@@ -64,7 +64,7 @@
               <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Contraseña" name="txtclave"/>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <a href="#">Recuperar Contraseña</a><br>
+                <a href="../vista/reccon.php">Recuperar Contraseña</a><br>
               </div>
                 <div class="col-xs-13">
                     <button type="submit" class="btn btn-success btn-block btn-danger">Inicio de Sesion</button>
