@@ -4,7 +4,7 @@ require_once '../util/phpmailer/PHPMailerAutoload.php';
 require_once '../util/funciones/Funciones.clase.php';
 require_once '../negocio/Usuario.clase.php';
 
-if ((! isset($_POST["p_usuario"]))){
+if ((! isset($_POST["p_correo"]))){
     Funciones::imprimeJSON(500, "Faltan parametros", "");
     exit();
 }

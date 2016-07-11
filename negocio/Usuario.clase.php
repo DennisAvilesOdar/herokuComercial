@@ -7,6 +7,33 @@ class Usuario extends Conexion{
     private $codigoUsuario;
     private $dni_usuario;
     private $clave;
+    private $usuario;
+    private $correo;
+    private $codigoSeguridad;
+    
+    function getUsuario() {
+        return $this->usuario;
+    }
+
+    function getCorreo() {
+        return $this->correo;
+    }
+
+    function getCodigoSeguridad() {
+        return $this->codigoSeguridad;
+    }
+
+    function setUsuario($usuario) {
+        $this->usuario = $usuario;
+    }
+
+    function setCorreo($correo) {
+        $this->correo = $correo;
+    }
+
+    function setCodigoSeguridad($codigoSeguridad) {
+        $this->codigoSeguridad = $codigoSeguridad;
+    }
     
     function getClave() {
         return $this->clave;
@@ -115,5 +142,92 @@ class Usuario extends Conexion{
         
         return false;
             
+    }
+    public function cambiarClave() {
+        $this->dblink->beginTransaction();
+        try {
+            $sql = "update cliente set clave = :p_pass where email = :p_usuario";
+            $sentencia = $this->dblink->prepare($sql);
+            
+            $sentencia->bindParam(":p_pass", $this->getClave());
+            $sentencia->bindParam(":p_usuario", $this->getUsuario());
+            $sentencia->execute();
+            
+            $this->dblink->commit();
+            
+            return true;
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+    }
+    
+    public function buscarUsuario() {
+        try {
+            $sql = " SELECT email, estado FROM cliente WHERE email = :p_usuario";
+            
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_usuario", $this->getUsuario());
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            
+            if ($resultado["usuario"] ==  $this->getUsuario()){
+                if ($resultado["estado"] == "I"){
+                    //Usuario inactivo, NO puede ingresar a la app
+                    return 0;
+                }else{
+                    //Usuario activo, procede a restablecer
+                    return 1;
+                }
+            }else{
+                //El usuario o correo no esta grabado en la BD
+                return 2;
+            }
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+    
+    public function codigoSeguridad($usuario, $codigoseguridad) {
+        $this->dblink->beginTransaction();
+        try {
+            $sql = "update cliente set codigoseguridad = :p_codigoseguridad where email = :p_usuario";
+            $sentencia = $this->dblink->prepare($sql);
+            
+            $sentencia->bindParam(":p_codigoseguridad", $codigoseguridad);
+            $sentencia->bindParam(":p_usuario", $usuario);
+            $sentencia->execute();
+            
+            $this->dblink->commit();
+            
+            return true;
+            
+        } catch (Exception $exc) {
+            $this->dblink->rollBack();
+            throw $exc;
+        }
+    }
+    
+    public function confirmarCodigoSeguridad() {
+        try {
+            $sql = "SELECT email FROM cliente WHERE email = :p_usuario and codigoseguridad = :p_codigoseguridad";
+            
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_usuario", $this->getUsuario());
+            $sentencia->bindParam(":p_codigoseguridad", $this->getCodigoSeguridad());
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            
+            if ($resultado["usuario"] ==  $this->getUsuario()){
+                //Codigo de seguridad correcto, procede a restablecer
+                return 1;
+            }else{
+                //Codigo de seguridad incorrecto
+                return 2;
+            }
+        } catch (Exception $exc) {
+            throw $exc;
+        }
     }
 }
