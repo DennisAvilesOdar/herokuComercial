@@ -101,7 +101,7 @@
 				  <input type="hidden" name="txttipooperacion" id="txttipooperacion" class="form-control">
 				  <div class="row">
 				    <div class="col-xs-3">
-					<p>CÛdigo Cliente<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
+                                        <p><font color="black"><b>Codigo Cliente</b></font><input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
 				    </div>
 				  </div>
                                   <p><font color="black"><b>Apellido Paterno</b></font> <font color = "purple">*</font>
