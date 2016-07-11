@@ -27,7 +27,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de Areas</h1>
+                    <h1 class="text-bold text-black" style="font-size: 20px;">Mantenimiento de Usuarios</h1>
                 </section>
 
                 <section class="content">
@@ -48,13 +48,15 @@
 					<p>Código Usuario<input type="text" name="txtcodigo" id="txtcodigo" class="form-control input-sm text-center text-bold" placeholder="" readonly=""></p>
 				    </div>
 				  </div>
-				  <p>Dni Usuari <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
-				  <p>Nombre Completo<font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
-                                  <p>Estado <font color = "red">*</font>
-				  	<input type="text" name="txtnombre" id="txtnombre" class="form-control input-sm" placeholder="" required=""><p>
+				  <p>
+				      Dni Usuario <font color = "red">*</font>
+				      <select class="form-control input-sm" name="cbodnimodal" id="cbodnimodal" required="" >
+
+				      </select>
+				  </p>
                                   
+                                  <p>Clave <font color = "red">*</font>
+                                        <input type="password" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>
 				      <font color = "red">* Campos obligatorios</font>
 				  </p>
@@ -72,7 +74,7 @@
 
                     <div class="row">
                         <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Agregar nueva area</button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-copy"></i> Agregar nuevo usuario</button>
                         </div>
                     </div>
                     <p>

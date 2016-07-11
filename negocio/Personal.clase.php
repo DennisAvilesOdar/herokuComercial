@@ -270,4 +270,17 @@ class Personal extends Conexion{
         return false;
     }
     
+    public function cargarListaDatos(){
+        try {
+            $sql = "select dni from personal order by 1";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+            
+    }
+    
 }

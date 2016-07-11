@@ -67,7 +67,7 @@
                                   <p>Email <font color = "red">*</font>
 				  	<input type="text" name="txtcorreo" id="txtcorreo" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>Clave <font color = "red">*</font>
-				  	<input type="text" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>
+                                        <input type="password" name="txtclave" id="txtclave" class="form-control input-sm" placeholder="" required=""><p>
                                   <p>Direccion Web <font color = "red">*</font>
 				  	<input type="text" name="txtweb" id="txtweb" class="form-control input-sm" placeholder="" required=""><p>
 				  <p>

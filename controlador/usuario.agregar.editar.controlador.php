@@ -1,0 +1,37 @@
+<?php
+
+require_once '../negocio/Usuario.clase.php';
+require_once '../util/funciones/Funciones.clase.php';
+
+if (! isset($_POST["p_datosFormulario"]) ){
+    Funciones::imprimeJSON(500, "Faltan parametros", "");
+    exit();
+}
+
+$datosFormulario = $_POST["p_datosFormulario"];
+
+//Convertir todos los datos que llegan concatenados a un array
+parse_str($datosFormulario, $datosFormularioArray);
+
+//echo '<pre>';
+//print_r($datosFormularioArray);
+//echo '</pre>';
+
+
+try {
+    $objUsuario = new Usuario();
+    $objUsuario->setDni_usuario( $datosFormularioArray["cbodnimodal"] );
+    $cl = ( $datosFormularioArray["txtclave"] );
+    $clmd5 = md5($cl);
+    $objUsuario->setClave($clmd5);
+    
+    if ($datosFormularioArray["txttipooperacion"]=="agregar"){
+        $resultado = $objCliente->agregar();
+        if ($resultado==true){
+            Funciones::imprimeJSON(200, "Grabado correctamente", "");
+        }
+    }
+    
+} catch (Exception $exc) {
+    Funciones::imprimeJSON(500, $exc->getMessage(), "");
+}
