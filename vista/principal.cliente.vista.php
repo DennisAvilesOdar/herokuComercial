@@ -41,10 +41,11 @@
     <div class="wrapper">
       
       <?php
+      include 'articulo.cliente.vista.php';
       ?>
       <div class="content-wrapper">
           <section class="content">
-              <a href="articulo.cliente.vista.php">INGRESAR COMO ADMINISTRADOR</a><br>
+<!--	      <a href="index.php">INGRESAR COMO ADMINISTRADOR</a><br>-->
           </section>
 	  
       </div>
