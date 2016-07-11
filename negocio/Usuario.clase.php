@@ -172,7 +172,7 @@ class Usuario extends Conexion{
             $sentencia->execute();
             $resultado = $sentencia->fetch();
             
-            if ($resultado["usuario"] ==  $this->getUsuario()){
+            if ($resultado["email"] ==  $this->getUsuario()){
                 if ($resultado["estado"] == "I"){
                     //Usuario inactivo, NO puede ingresar a la app
                     return 0;
@@ -219,7 +219,7 @@ class Usuario extends Conexion{
             $sentencia->execute();
             $resultado = $sentencia->fetch();
             
-            if ($resultado["usuario"] ==  $this->getUsuario()){
+            if ($resultado["email"] ==  $this->getUsuario()){
                 //Codigo de seguridad correcto, procede a restablecer
                 return 1;
             }else{
