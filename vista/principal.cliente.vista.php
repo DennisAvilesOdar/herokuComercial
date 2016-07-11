@@ -41,6 +41,7 @@
     <div class="wrapper">
       
       <?php
+      include 'articulo.cliente.vista.php';
       ?>
       <div class="content-wrapper">
           <section class="content">
